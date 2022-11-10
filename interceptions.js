@@ -32,6 +32,33 @@ If they intersect Tell me the point (x,y)
 at which they intersect 
  */
 function lineInterception(x1, x2, x3, x4, y1, y2, y3, y4){
+    //Points x & y
+    a = (x1 - x2)
+    b = (x3 - x4)
+    c = (y1 - y2)
+    d = (y3 - y4)
+
+    //advnace math points lol 
+    e = ((x1 * y2) - (y1 * x2))
+    f = ((x3 * y4) - (y3 * x4))
+
+    //ax = ((e * b) - (a * f)) / ((a * d) - (c * b))
+    //by = ((e * d) - (c * f)) / ((a * d) - (c * b))
+    a1 = ((e * b) - (a * f))
+    b1 = ((e * d) - (c * f))
+    c1 = ((a * d) - (c * b))
+
+    ax = a1 / c1
+    by = b1 / c1
+
+    if (c1 === 0) {
+        console.log("PARALLEL OR COINCIDENT " + `${ ax }` + `${ by }`)
+    } else if (ax === by ) {
+        console.log("INTERSECTION " + `${ ax }` + `${ by }` )
+    }
+
+    //return (ax, by)
+    /*
  // different points
     a = (x1 - x3)
     b = (y3 - y4)
@@ -41,10 +68,10 @@ function lineInterception(x1, x2, x3, x4, y1, y2, y3, y4){
     f = (y1 - y2)
 
     // line segment one
-    t = ((a * b) - (c * d)) / ((e * d) - (f * d))
+    t = ((a * b) + (c * d)) / ((e * d) + (f * d))
 
     //lien segment two
-    u = ((a * f) - (c * e)) / ((e * b) - (f * d))
+    u = ((a * f) + (c * e)) / ((e * b) + (f * d))
 
    //(a1, b1)
     a1 = (x1 + t *(x2 - x1))
@@ -57,11 +84,12 @@ function lineInterception(x1, x2, x3, x4, y1, y2, y3, y4){
 
     if (t === 0 || u === 0) {
         console.log("Nope try again " + `${ t}` + `${ u}`)
-    }else if (0 < t <= 1 && 0 < u <= 1){
-        console.log("INTERSECTION " + `${ t}` + `${ u}`)
-    } else {
-        console.log("Nope try again " + `${ t}` + `${ u}`)
+    }else if (0 < t <= 1){
+        console.log("INTERSECTION segment 1" + `${ t}` + `${ u}`)
+    } else  if (0 < u <= 1){
+        console.log("INTERSECTION segment 2 " + `${ t}` + `${ u}`)
     }
+    */
     /*
     c = y4 - y3
     d = x4 - x3
