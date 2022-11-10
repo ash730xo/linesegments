@@ -48,16 +48,11 @@ function lineInterception(x1, x2, x3, x4, y1, y2, y3, y4){
     b1 = ((e * d) - (c * f))
     c1 = ((a * d) - (c * b))
 
-    ax = a1 / c1
-    by = b1 / c1
+    ax = a1/c1
+    b2 = b1/c1
 
-    if (c1 === 0) {
-        console.log("PARALLEL OR COINCIDENT " + `${ ax }` + `${ by }`)
-    } else if (ax === by ) {
-        console.log("INTERSECTION " + `${ ax }` + `${ by }` )
-    }
-
-    //return (ax, by)
+   console.log(ax)
+   console.log(b2)
     /*
  // different points
     a = (x1 - x3)
@@ -124,8 +119,8 @@ x3 y3     x4, y4
 [3,6]     [3,2]    
 */
 
-console.log(lineInterception(0, 5, 5, 2, 0, 6, 6, 2)) // false 0.6 0 
-console.log(lineInterception(8, 3, 6, 6, 5, 5, 7, 3)) // true infinty 0.5
+//console.log(lineInterception(0, 5, 5, 2, 0, 6, 6, 2)) // True 6
+//console.log(lineInterception(8, 3, 6, 6, 5, 5, 7, 3)) // true 6,5
 console.log(lineInterception(0, 8, 0, 0, 0, 0, 0, 7)) // 
 
 /**
