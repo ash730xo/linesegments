@@ -31,7 +31,6 @@ Line 2 (x3,y3), (x4,y4)
 If they intersect Tell me the point (x,y)
 at which they intersect 
  */
-
 function lineInterception(x1, x2, x3, x4, y1, y2, y3, y4){
  // different points
     a = (x1 - x3)
@@ -56,12 +55,13 @@ function lineInterception(x1, x2, x3, x4, y1, y2, y3, y4){
     a2 = (x3 + u * (x4 - x3))
     b2 = (y3 + u * (y4 - y3))
 
-    if (0 <= t <= 1 && 0 <= u <= 1){
+    if (t === 0 || u === 0) {
+        console.log("Nope try again " + `${ t}` + `${ u}`)
+    }else if (0 < t <= 1 && 0 < u <= 1){
         console.log("INTERSECTION " + `${ t}` + `${ u}`)
     } else {
         console.log("Nope try again " + `${ t}` + `${ u}`)
     }
-
     /*
     c = y4 - y3
     d = x4 - x3
@@ -96,8 +96,9 @@ x3 y3     x4, y4
 [3,6]     [3,2]    
 */
 
-console.log(lineInterception(0, 5, 5, 2, 0, 6, 6, 2)) // true 0.6 0 
+console.log(lineInterception(0, 5, 5, 2, 0, 6, 6, 2)) // false 0.6 0 
 console.log(lineInterception(8, 3, 6, 6, 5, 5, 7, 3)) // true infinty 0.5
+console.log(lineInterception(0, 8, 0, 0, 0, 0, 0, 7)) // 
 
 /**
  * Resources: https://en.wikipedia.org/wiki/Line%E2%80%93line_intersection 
