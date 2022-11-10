@@ -24,9 +24,45 @@ and      m2 = y4 - y3 / x4 - x3
 
  */
 
+/*
+Given 2 line segments 
+Line 1 (x1,y1), (x2,y2)
+Line 2 (x3,y3), (x4,y4)
+If they intersect Tell me the point (x,y)
+at which they intersect 
+ */
+
 function lineInterception(x1, x2, x3, x4, y1, y2, y3, y4){
-    a = y2 - y1 
-    b = x2 - x1
+ // different points
+    a = (x1 - x3)
+    b = (y3 - y4)
+    c = (y1 - y3)
+    d = (x3 - x4)
+    e = (x1 - x2)
+    f = (y1 - y2)
+
+    // line segment one
+    t = ((a * b) - (c * d)) / ((e * d) - (f * d))
+
+    //lien segment two
+    u = ((a * f) - (c * e)) / ((e * b) - (f * d))
+
+   //(a1, b1)
+    a1 = (x1 + t *(x2 - x1))
+    b1 = (y1 + t * (y2 - y1))
+
+    // OR 
+    // (a2, b2)
+    a2 = (x3 + u * (x4 - x3))
+    b2 = (y3 + u * (y4 - y3))
+
+    if (0 <= t <= 1 && 0 <= u <= 1){
+        console.log("INTERSECTION " + `${ t}` + `${ u}`)
+    } else {
+        console.log("Nope try again " + `${ t}` + `${ u}`)
+    }
+
+    /*
     c = y4 - y3
     d = x4 - x3
 
@@ -34,13 +70,16 @@ function lineInterception(x1, x2, x3, x4, y1, y2, y3, y4){
     m2 = c/d
 
     if(m1 === 0 || m2 === 0){
-        console.log("FALSE" + (`${m1}`) + (`${m2}`))
-    } else if(m1 === m2){
-        console.log ((`${m1}`) + (`${m2}`))
-    } else {
+        //determines if it is parallel
+        console.log("PARALLEL" + (`${m1}`) + (`${m2}`))
+    } else if(m1 * m2 === -1){
+        //perpendicular
+        console.log (" PERPENDICULAR " + (`${m1}`) + (`${m2}`))
+    } else if(){
         console.log(" FALSE " + ((`${m1}`) + " , " +  (`${m2}`)))
     }
     //return (a,b)
+    */
 }
 /*
 x1 y1   x2  y2        
@@ -57,8 +96,10 @@ x3 y3     x4, y4
 [3,6]     [3,2]    
 */
 
-console.log(lineInterception(0, 5, 5, 2, 0, 6, 6, 2)) // false
-console.log(lineInterception(0, 5, 5, 2, 0, 6, 6, 2))
+console.log(lineInterception(0, 5, 5, 2, 0, 6, 6, 2)) // true 0.6 0 
+console.log(lineInterception(8, 3, 6, 6, 5, 5, 7, 3)) // true infinty 0.5
 
-
+/**
+ * Resources: https://en.wikipedia.org/wiki/Line%E2%80%93line_intersection 
+ */
 
